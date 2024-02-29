@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADS - HOME</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>RADS - HOME</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><button onclick="changeLanguage('ru')" id="ruBtn">RU</button></li>
+            <li><button onclick="changeLanguage('en')" id="enBtn">EN</button></li>
+            <li><button onclick="goToOtherPage()">Go to Other Page</button></li> <!-- New button -->
+        </ul>
+    </nav>
+
+    <section class="main-content">
+        <h2 id="welcome-text"></h2>
+        <p id="content-text"></p>
+        <ul id="additional-text"></ul>
+    </section>
+
+    <footer>
+        <p>&copy; RADS Ragdoll System. 2024.</p>
+    </footer>
+
+    <script>
+        const languageData = {
+            'ru': {
+                'welcome': 'Добро пожаловать на сайт RADS регдолл системы!',
+                'content': 'Новости обновлений',
+                'line1': 'Наконец. Стрельба в регдолле. Бери любое PWB оружие и регдолься.Зажми пкм,чтобы перемещать пушку,лкм,чтобы стрелять.R для перезарядки',
+                'line2': 'Теперь третье лицо клиентское.',
+                'line3': 'Добавлена новая чат-команда (#drop), в настоящее время я рекомендую использовать эту команду ТОЛЬКО в регдолле. В противном случае это может вызвать ошибки.',
+                'line4': 'Новое Мотд. Опять.',
+                'line5': 'Регдоллы имеют цвет игрока.',
+                'line6': 'НОВОЕ МЕНЮ. Q>RADS>Options'
+            },
+            'en': {
+                'welcome': 'Welcome to RADS Ragdoll System WebSite!',
+                'content': 'Update News',
+                'line1': 'FINALLY. SHOOTING IN RAGDOLL.GRAB ANY PWB WEAPON AND RAGDOLL. RMB TO MOVE WEAPON,LMB TO SHOOT.R TO RELOAD.',
+                'line2': 'Added MENU. Q>RADS>Options',
+                'line3': 'Now thirdperson is clientside',
+                'line4': 'Added new chatcommand(#drop) currently i recommend to use this command ONLY in ragdoll.Otherwise it can cause errors.',
+                'line5': 'Now ragdolls paints like players color',
+                'line6': 'New MOTD. Again.'
+            }
+        };
+
+        function changeLanguage(lang) {
+            const welcomeText = document.getElementById('welcome-text');
+            const contentText = document.getElementById('content-text');
+            const additionalText = document.getElementById('additional-text');
+            welcomeText.textContent = languageData[lang]['welcome'];
+            contentText.textContent = languageData[lang]['content'];
+            additionalText.innerHTML = '';
+            for (let i = 1; i <= 6; i++) {
+                const listItem = document.createElement('li');
+                listItem.textContent = languageData[lang]['line' + i];
+                additionalText.appendChild(listItem);
+            }
+
+            // Highlight the active language button
+            const ruBtn = document.getElementById('ruBtn');
+            const enBtn = document.getElementById('enBtn');
+            if (lang === 'ru') {
+                ruBtn.style.backgroundColor = '#0f0';
+                ruBtn.style.color = '#000';
+                enBtn.style.backgroundColor = '';
+                enBtn.style.color = '';
+            } else if (lang === 'en') {
+                enBtn.style.backgroundColor = '#0f0';
+                enBtn.style.color = '#000';
+                ruBtn.style.backgroundColor = '';
+                ruBtn.style.color = '';
+            }
+        }
+
+        // Set default language to Russian on page load
+        window.onload = function() {
+            changeLanguage('ru');
+        };
+
+        // Function to redirect to other page
+        function goToOtherPage() {
+            window.location.href = 'index2.html'; // Change 'otherpage.html' to the desired page URL
+        }
+    </script>
+</body>
+</html>

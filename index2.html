@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADS - Second Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>RADS - Second Page</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><button onclick="changeLanguage('ru')" id="ruBtn">RU</button></li>
+            <li><button onclick="changeLanguage('en')" id="enBtn">EN</button></li>
+            <li><button onclick="goToHomePage()">Go to Home Page</button></li> <!-- New button -->
+        </ul>
+    </nav>
+
+    <section class="main-content">
+        <h2 id="welcome-text"></h2>
+        <p id="content-text"></p>
+        <ul id="additional-text"></ul>
+    </section>
+
+    <footer>
+        <p>&copy; RADS Ragdoll System. 2024.</p>
+    </footer>
+
+    <script>
+        const languageData = {
+            'ru': {
+                'welcome': 'Добро пожаловать на сайт RADS регдолл системы!',
+                'content': 'Управление',
+                'line1': 'Аддон имеет поддержку JMOD',
+                'line2': 'Чтобы двигать,нужно зажать кнопку и двигать мышью',
+                'line3': 'Чтобы двигать головой - E',
+                'line4': 'Чтобы двигать левой рукой - Левая кнопка мыши',
+                'line5': 'Чтобы двигать правой рукой - Правая кнопка мыши',
+                'line6': 'Подтянуться/наклониться вперед - W',
+                'line7': 'Наклониться назад - S',
+                'line8': 'Разорвать стяжки - SPACE',
+                'line9': 'Схватить левой/правой рукой - LSHIFT, LALT',
+                'line10': 'Команды более не нужны. Используйте меню',
+            },
+            'en': {
+                'welcome': 'Welcome to RADS Ragdoll System WebSite!',
+                'content': 'Controls',
+                'line1': 'Addon has an JMOD Support',
+                'line2': 'To move you should move your mouse and hold key',
+                'line3': 'To move head - E',
+                'line4': 'To move left hand - Left mouse button',
+                'line5': 'To move right hand - Right mouse button',
+                'line6': 'To pull up / lean forward - W',
+                'line7': 'To lean back - S',
+                'line8': 'To grab with left hand - SHIFT',
+                'line9': 'To grab with right hand - Left ALT',
+                'line10': 'To break restraints - SPACE',
+                'line11': 'You dont need commands anymore. Use menu'
+            }
+        };
+
+        function changeLanguage(lang) {
+            const welcomeText = document.getElementById('welcome-text');
+            const contentText = document.getElementById('content-text');
+            const additionalText = document.getElementById('additional-text');
+            welcomeText.textContent = languageData[lang]['welcome'];
+            contentText.textContent = languageData[lang]['content'];
+            additionalText.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const listItem = document.createElement('li');
+                listItem.textContent = languageData[lang]['line' + i];
+                additionalText.appendChild(listItem);
+            }
+
+            const ruBtn = document.getElementById('ruBtn');
+            const enBtn = document.getElementById('enBtn');
+            if (lang === 'ru') {
+                ruBtn.style.backgroundColor = '#0f0';
+                ruBtn.style.color = '#000';
+                enBtn.style.backgroundColor = '';
+                enBtn.style.color = '';
+            } else if (lang === 'en') {
+                enBtn.style.backgroundColor = '#0f0';
+                enBtn.style.color = '#000';
+                ruBtn.style.backgroundColor = '';
+                ruBtn.style.color = '';
+            }
+        }
+
+        function goToHomePage() {
+            window.location.href = 'index.html';
+        }
+        window.onload = function() {
+            changeLanguage('ru');
+        };
+    </script>
+</body>
+</html>
