@@ -39,7 +39,8 @@
                 'line3': 'Добавлена новая чат-команда (#drop), в настоящее время я рекомендую использовать эту команду ТОЛЬКО в регдолле. В противном случае это может вызвать ошибки.',
                 'line4': 'Новое Мотд. Опять.',
                 'line5': 'Регдоллы имеют цвет игрока.',
-                'line6': 'НОВОЕ МЕНЮ. Q>RADS>Options'
+                'line6': 'НОВОЕ МЕНЮ. Q>RADS>Options',
+                'line7': 'Добавлен лимит силы для правой и левой руки'
             },
             'en': {
                 'welcome': 'Welcome to RADS Ragdoll System WebSite!',
@@ -49,7 +50,8 @@
                 'line3': 'Now thirdperson is clientside',
                 'line4': 'Added new chatcommand(#drop) currently i recommend to use this command ONLY in ragdoll.Otherwise it can cause errors.',
                 'line5': 'Now ragdolls paints like players color',
-                'line6': 'New MOTD. Again.'
+                'line6': 'New MOTD. Again.',
+                'line7': 'Added left & right hand grip limit'
             }
         };
 
@@ -60,7 +62,7 @@
             welcomeText.textContent = languageData[lang]['welcome'];
             contentText.textContent = languageData[lang]['content'];
             additionalText.innerHTML = '';
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 7; i++) {
                 const listItem = document.createElement('li');
                 listItem.textContent = languageData[lang]['line' + i];
                 additionalText.appendChild(listItem);
